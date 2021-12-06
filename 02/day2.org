@@ -1,0 +1,66 @@
+* Day 2: Immersione! 
+
+  Ora devi capire come pilotare questa cosa.
+
+  Sembra che il sottomarino possa eseguire una serie di comandi come =forward 1=, =down 2= o =up 3=:
+  - =forward X= aumenta la posizione orizzontale di =X= unità.
+  - =down X= aumenta la profondità di =X= unità.
+  - =up X= diminuisce la profondità di =X= unità.
+
+  Nota che poiché sei su un sottomarino, il basso e l'alto influenzano la tua =profondità= (=depth=),
+  quindi le operazioni =up= e =down= potrebbero influire in maniera opposta a quella che potresti aspettarti.
+
+  Il sottomarino sembra avere già una rotta pianificata (ovvero l'input di puzzle).
+  Devi capire dove sta dove sta andando in base ad una data traiettoria, come per esempio:
+
+  |-------------|
+  | =forward 5= |
+  | =down 5=    |
+  | =forward 8= |
+  | =up 3=      |
+  | =down 8=    |
+  | =forward 2= |
+  |-------------|
+
+
+  La posizione orizzontale e la profondità iniziano entrambe da =0=.
+  I passaggi precedenti hanno quindi i seguenti effetti:
+  - =forward 5= aggiunge =5= alla tua posizione orizzontale, per un totale di =5=.
+  - =down 5= aggiunge =5= alla tua profondità, risultando in un valore di =5=.
+  - =forward 8= aggiunge =8= alla tua posizione orizzontale, per un totale di =13=.
+  - =up 3= diminuisce la tua profondità di =3=, risultando in un valore di =2=.
+  - =down 8= aggiunge =8= alla tua profondità, risultando in un valore di =10=.
+  - =forward 2= aggiunge =2= alla tua posizione orizzontale, per un totale di =15=.
+
+  Dopo aver seguito queste istruzioni, avrai una posizione orizzontale di =15= e una profondità di =10=.
+  Moltiplicandoli otterrai =150=.
+
+  Calcola la posizione orizzontale e la profondità che avresti dopo aver seguito il percorso.
+  *Cosa ottieni se moltiplichi la tua posizione orizzontale finale per la tua profondità finale?*
+
+** Parte 2
+   In base ai tuoi calcoli, il percorso pianificato non sembra avere alcun senso.
+   Trovi il manuale del sottomarino e scopri che il processo è in realtà leggermente più complicato.
+
+   Oltre alla posizione orizzontale e alla profondità, dovrai anche tenere traccia di un terzo valore, =aim= (la =mira=), che inizia anch'esso da =0=.
+   I comandi si comportano in maniera differente:
+   - =down X= incrementa =aim= di =X= unità.
+   - =up X= decrementa =aim= di =X= unità.
+   - =forward X= fa due cose:
+     - incrementa la posizione orizzontale di =X= unità.
+     - incrementa la profondità di =aim= moltiplicato per =X=.
+   
+   L'esempio precedente assumerà quindi la nuova interpretazione:
+   - =forward 5= aggiunge =5= alla tua posizione orizzontale, per un totale di =5=. Poiché =aim= inizialmente vale =0=, la profondità non cambia.
+   - =down 5= aggiunge =5= ad =aim=, risultando in un valore di =5=.
+   - =forward 8= aggiunge =8= alla tua posizione orizzontale, per un totale di =13=. Poiché =aim= vale ora =5=, la profondità aumenterà di =5 * 8 = 40=.
+   - =up 3= diminuisce =aim= di =3=, risultando in un valore di =2=.
+   - =down 8= aggiunge =8= ad =aim=, risultando in un valore di =10=.
+   - =forward 2= aggiunge =2= alla tua posizione orizzontale, per un totale di =15=. Infine somma alla profondità il valore =10 * 2 = 20=, per un totale di =60=.
+     
+   Dopo aver seguito le nuove istruzione, dovrebbe risultare una posizione orizzontale di =15= e una profondità di =60=.
+   Moltiplicandoli si avrà il valore =900=.
+   
+   Utilizzando questa nuova interpretazione dei comandi, calcola la posizione orizzontale e la profondità che avresti dopo aver eseguito il percorso.
+   *Cosa ottieni se moltiplichi la tua posizione orizzontale finale per la tua profondità finale?*
+

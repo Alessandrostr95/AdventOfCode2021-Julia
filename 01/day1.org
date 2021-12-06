@@ -1,0 +1,119 @@
+* Giorno 1: Scansione sonar
+  Ti stai facendo gli affari tuoi su una nave in mare quando scatta l'allarme fuoribordo!
+  Corri a vedere se puoi aiutare.
+  A quanto pare, uno degli Elfi è inciampato e ha accidentalmente fatto volare le chiavi della slitta nell'oceano!
+
+  Prima che tu te ne accorga, sei all'interno di un sottomarino che gli Elfi tengono pronti per situazioni come questa
+  È coperto di luci natalizie (ovviamente...) e ha anche un'antenna sperimentale che dovrebbe essere in grado di tracciare
+  le chiavi smarrite se riesci ad aumentare abbastanza in alto la potenza del segnale.
+  C'è un piccolo misuratore che indica la potenza del segnale dell'antenna, con valori crescenti da 0 a 50 stelle.
+
+  Il tuo istinto ti dice che per salvare il Natale dovrai ottenere tutte e cinquanta le stelle entro il 25 dicembre.
+
+  Raccogli le stelle risolvendo i puzzle.
+  Due puzzle saranno resi disponibili ogni giorno nel calendario dell'Avvento;
+  il secondo puzzle viene sbloccato quando completi il ​​primo.
+  Ogni puzzle garantisce una stella.
+  Buona fortuna!
+
+  Quando il sottomarino scende sotto la superficie dell'oceano, il sonar esegue automaticamente una scansione fondale marino.
+  Su un piccolo schermo viene visualizzato il rapporto di scansione del sonar (l'input del puzzle):
+  ogni riga è una misurazione della profondità del fondale marino al di sotto del punto in cui si trova il sottomarino. 
+
+  Per esempio, supponiamo di ricevere tali report dal sonar:
+  
+  |--------|
+  | Report |
+  |--------|
+  |    199 |
+  |    200 |
+  |    208 |
+  |    210 |
+  |    200 |
+  |    207 |
+  |    240 |
+  |    269 |
+  |    260 |
+  |    263 |
+  |--------|
+
+  
+  Questo rapporto indica che, scansionando verso l'esterno dal sottomarino, il sonar ha trovato profondità di 199, 200, 208, 210 e così via. 
+  
+  Il primo ordine del giorno è capire quanto velocemente aumenta la profondità del fondale, solo così avrai un'diea dell'ambiente in cui stai cercando le chiavi.
+  Non sai mai se le chiavi verranno portate in acque più profonde da una corrente oceanica, o da un pesce, o da qualcosa del genere...
+
+  Per fare ciò, contare il numero di volte in cui una misurazione della profondità aumenta rispetto alla misurazione precedente.
+  Assumiamo che non c'è nessuna misurazione precedente alla prima misurazione.
+  Nell'esempio sopra, il risultato dovrà essere il seguente
+
+  |--------+---------------------------------|
+  | Report | Result                          |
+  |--------+---------------------------------|
+  |    199 | (N/A - no previous measurement) |
+  |    200 | (*increased*)                   |
+  |    208 | (*increased*)                   |
+  |    210 | (*increased*)                   |
+  |    200 | (decreased)                     |
+  |    207 | (*increased*)                   |
+  |    240 | (*increased*)                   |
+  |    269 | (*increased*)                   |
+  |    260 | (decreased)                     |
+  |    263 | (*increased*)                   |
+  |--------+---------------------------------|
+
+
+  In questo esempio, ci sono =7= misurazioni più grandi della misurazione precedente.
+
+  *Quante misurazioni sono più grandi della misurazione precedente?*
+
+
+* Part 2
+  Come ci si aspettava, considerare le singole misurazioni non è abbastanza utile, in quanto c'è troppo rumore nei dati.
+
+  Consideriamo invece una somma di una /three-measurement sliding window/ (una finestra scorrevole che mostra tre misurazioni).
+  Riferendoci sempre al precedente esempio
+
+  |--------+------------------------------|
+  | Report | 3-measurement sliding window |
+  |--------+------------------------------|
+  |    199 | A _ _ _                      |
+  |    200 | A B _ _                      |
+  |    208 | A B C _                      |
+  |    210 | _ B C D                      |
+  |    200 | E _ C D                      |
+  |    207 | E F _ D                      |
+  |    240 | E F G _                      |
+  |    269 | _ F G H                      |
+  |    260 | _ _ G H                      |
+  |    263 | _ _ _ H                      |
+  |--------+------------------------------|
+
+  
+  Inizia confrontando la prima e la seconda finestra di tre misurazioni.
+  Le misure nella prima finestra sono contrassegnate con =A= =(199, 200, 208)=: la loro somma è =199 + 200 + 208 = 607=.
+  La seconda finestra è contrassegnata con =B= =(200, 208, 210)=: la sua somma è =618=.
+  Se la somma delle misurazioni nella seconda finestra è maggiore della somma della prima, allora diciamo che la misurazione aumenta. 
+  
+  Il tuo obiettivo ora è contare il numero di volte in cui la somma delle misurazioni in questa finestra scorrevole aumenta rispetto alla somma precedente.
+  Quindi, confronta =A= con =B=, poi =B= con =C=, =C= con =D= e così via...
+  Fermati quando non ci sono abbastanza misurazioni rimaste per creare una nuova somma di tre misurazioni. 
+
+  Nell'esempio precedente, la somma di ciascuna finestra è la seguente:
+  
+  |----------+-------+-------------------------|
+  | Finestra | Somma | Result                  |
+  |----------+-------+-------------------------|
+  | A        |   607 | (N/A - no previous sum) |
+  | B        |   618 | (*increased*)           |
+  | C        |   618 | (no change)             |
+  | D        |   617 | (decreased)             |
+  | E        |   647 | (*increased*)           |
+  | F        |   716 | (*increased*)           |
+  | G        |   769 | (*increased*)           |
+  | H        |   792 | (*increased*)           |
+  |----------+-------+-------------------------|
+
+  In questo esempio, ci sono =5= somme maggiori delle precedenti.
+
+  *Considerando le somme delle /three-measurement sliding window/, quante somme sono maggiori della somma precedente?*

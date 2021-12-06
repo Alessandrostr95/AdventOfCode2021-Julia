@@ -1,0 +1,43 @@
+* Day 3: Diagnostica binaria
+  Il sottomarino ha emesso degli strani rumori, quindi gli chiedi di produrre un rapporto diagnostico.
+
+  Il rapporto diagnostico (il tuo input di puzzle) consiste in un elenco di numeri binari che, se decodificati correttamente,
+  possono dirti molte cose utili sulle condizioni del sottomarino.
+  Il primo parametro da controllare è il =consumo di energia=.
+
+  È necessario utilizzare i numeri binari nel rapporto diagnostico per generare due nuovi numeri binari, il =gamma rate= e l'=epsilon rate=.
+  Il consumo di energia può quindi essere trovato moltiplicando il =gamma= per =epsilon=.
+
+  Ciascun bit di =gamma= può essere determinato trovando il bit più comune nella posizione corrispondente a tutti i numeri nel rapporto diagnostico.
+  Ad esempio, dato il seguente rapporto diagnostico:
+
+  |-------|
+  | 00100 |
+  | 11110 |
+  | 10110 |
+  | 10111 |
+  | 10101 |
+  | 01111 |
+  | 00111 |
+  | 11100 |
+  | 10000 |
+  | 11001 |
+  | 00010 |
+  | 01010 |
+  |-------|
+
+  Considerando solo il primo bit di ogni numero, ci sono cinque bit =0= e sette bit =1=.
+  Poiché il bit più comune è 1, e quindi il primo bit del =rate gamma= è 1.
+
+  Il secondo bit più comune dei numeri nel rapporto diagnostico è =0=, quindi il secondo bit di gamma è =0=.
+
+  Il valore più comune del terzo, quarto e quinto bit sono rispettivamente =1=, =1= e =0=, quindi gli ultimi tre bit di gamma sono =110=.
+
+  Quindi, il =rate gamma= è il numero binario =10110=, ovvero =22= in decimale.
+
+  Il volaore di =epsilon= viene calcolato in modo simile, però invece di utilizzare il bit più comune, viene utilizzato il bit meno comune di ciascuna posizione.
+  Quindi, il valore del =rate epsilon= è =01001=, ovvero =9= in decimale.
+  Moltiplicando la =gamma= per =epsilon= si ottiene che il consumo di energia è =198=.
+
+  Utilizzare i numeri binari nel rapporto diagnostico per calcolare il =rate gamma= e il =rate epsilon=, quindi moltiplicarli tra loro.
+  *Qual è il consumo di energia del sottomarino? (Assicurati di rappresentare la tua risposta in decimale, non in binario)*
