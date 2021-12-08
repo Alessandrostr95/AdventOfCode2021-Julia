@@ -41,3 +41,43 @@
 
   Utilizzare i numeri binari nel rapporto diagnostico per calcolare il =rate gamma= e il =rate epsilon=, quindi moltiplicarli tra loro.
   *Qual è il consumo di energia del sottomarino? (Assicurati di rappresentare la tua risposta in decimale, non in binario)*
+
+** Part 2
+   Successivamente, dovresti verificare la =valutazione del supporto vitale= del sottomarino, il quale può essere determinata moltiplicando la =valutazione del generatore di ossigeno=
+   per la =valutazione dello scrubber di CO2=.\\
+
+   Entrambe le valutazioni sono valori che possono essere trovati nel =rapporto diagnostico= precedente, il problema è trovarli...
+   Entrambi i valori vengono individuati utilizzando un processo simile che consiste nel filtraggio dei valori finché non ne rimane solo uno.
+   Prima di cercare uno dei due valori, prendi l'elenco completo dei numeri binari dal tuo rapporto diagnostico, e considera solo il primo bit di ciascuno di quei numeri.
+   Dopodiché:
+   - Conserva solo i numeri che rispettano il =bit criteria= (vedi dopo) per il tipo di valore che stai cercando (=bit crietria ossigeno=, =bit criteria C02=).
+     Scarta i numeri che non corrispondono a nessun criterio.
+   - Se ti rimane solo un numero, fermati; questo è il =valore di valutazione= che stai cercando.
+   - Altrimenti, ripeti il ​​processo, considerando il bit in posizione successiva (a destra).
+
+   I =bit criteria= sono:
+   - =bit crietria ossigeno=: se stai considerando i bit in posizione /k/, valuta quale bit è _più comune_ (0 o 1) tra tutti i numeri in posizione /k/.
+     Conserva solo i numeri che in posizione /k/ hanno il bit più comune.
+     Se c'è un parggio tra 0 e 1, assumi che 1 sia il più comune.
+   - =bit crietria CO2=: se stai considerando i bit in posizione /k/, valuta quale bit è _meno comune_ (0 o 1) tra tutti i numeri in posizione /k/.
+     Conserva solo i numeri che in posizione /k/ hanno il bit meno comune.
+     Se c'è un parggio tra 0 e 1, assumi che 0 sia il meno comune.
+
+   Per esempio, consideriamo ancora l'esempio precedente.\\
+
+   Se volessimo calcolare il valore di =valutazione del generatore di ossigeno=, eseguiremo i seguenti step:
+   - Inizia con tutti i 12 numeri, e considera solo il primo bit di ognuno.
+     Ci sono più bit 1 (ovvero 7) che bit 0 (ovvero 5), perciò mantieni solo i 7 numeri con  bit 1 nella prima posizione: =11110=, =10110=, =10111=, =10101=, =11100=, =10000= e =11001=.
+   - Dopodiché considera il secondo bit dei 7 numeri rimanenti: ci sono più bit 0 che bit 1, e quindi tieni solo i 4 numeri con uno 0 nella seconda posizione: =10110=, =10111=, =10101= e =10000=.
+   - Nella terza posizione, tre dei quattro numeri hanno un 1, quindi mantieni quei tre numeri: =10110=, =10111= e =10101=.
+   - Nella quarta posizione, due dei tre numeri hanno un bit 1, quindi mantieni quei due numeri: =10110= e =10111=.
+   - Nella quinta posizione, ci sono un numero uguale di bit 0 di bit 1. Quindi, in caso di pareggio, considera il bit 1 come maggioranza. Perciò l'unico numero a salvarsi sarà =10111=.
+   - Poiché è rimasto solo un numero, fermati! La =valutazione del generatore di ossigeno= è =10111=, ovvero pari a =23= in decimale.
+
+   Applicando il =bit criteria C02= si può ricavare che la =valutazione dello scrubber di C02= è pari a =01010=, ovvero =10= in decimale.\\
+
+   In conclusione, per ricavare la =valutazione del supporto vitale= del sottomarino, basta moltiplicare le due valutazioni, ottenendo il valore =230=.\\
+
+   Utilizzare i numeri binari nel rapporto diagnostico, calcolare la =valutazione del generatore di ossigeno= e la =valutazione dello scrubber di CO2= e poi moltiplicali tra loro.
+   *Qual è il livello di supporto vitale del sottomarino? (Assicurati di rappresentare la tua risposta in decimale, non in binario)*
+   
