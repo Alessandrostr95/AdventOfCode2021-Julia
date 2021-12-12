@@ -1,0 +1,88 @@
+* Day 4: Giant Squid
+  Siamo già quasi a =1,5km= sotto la superficie dell'oceano, così profondo da non riuscire a vedere la luce del sole.
+  Quello che puoi vedere, tuttavia, è un =calamaro gigante= attaccato all'esterno del sottomarino.
+
+  *Forse vuole giocare a bingo?*
+
+  Nel *Bingo* si gioca su una serie di schede, ciascuna composta da una griglia di numeri di dimensione =5x5=.
+  I numeri sulle schede sono scelti totalmente a caso.
+  Ad ogni turno viene estratto un numero casuale, e se presente sulla propria schede deve essere *marcato* 
+  (notare che i numeri potrebbero non apparire su tutte le schede).
+  Il primo che è in possesso di una scheda con tutti i numeri di una *riga* o *colonna* marcati, vince (le diagonali non contano).
+
+  Il sottomarino ha un sottosistema automatico per il bingo, utile ad aiutare i passeggeri (attualmente, tu e il calamaro gigante) a passare il tempo.
+  Tale sottosistema genera automaticamente una sequenza casuale di numeri estratti, e un insieme casuale di schede (=l'input del tuo puzzle=).
+  Per esempio: 
+
+  |--------------+------------------------------------------------------------------------|
+  | *Estrazioni* | 7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1 |
+  |--------------+------------------------------------------------------------------------|
+  | *Scheda 1*   | 22 13 17 11  0                                                         |
+  |              | 8  2 23  4 24                                                          |
+  |              | 21  9 14 16  7                                                         |
+  |              | 6 10  3 18  5                                                          |
+  |              | 1 12 20 15 19                                                          |
+  |--------------+------------------------------------------------------------------------|
+  | *Sched 2*    | 3 15  0  2 22                                                          |
+  |              | 9 18 13 17  5                                                          |
+  |              | 19  8  7 25 23                                                         |
+  |              | 20 11 10 24  4                                                         |
+  |              | 14 21 16 12  6                                                         |
+  |--------------+------------------------------------------------------------------------|
+  | *Scheda 3*   | 14 21 17 24  4                                                         |
+  |              | 10 16 15  9 19                                                         |
+  |              | 18  8 23 26 20                                                         |
+  |              | 22 11 13  6  5                                                         |
+  |              | 2  0 12  3  7                                                          |
+  |--------------+------------------------------------------------------------------------|
+
+  Dopo l'estrazione dei primi cinque numeri (7, 4, 9, 5 e 11), non ci sono vincitori, ma le schede sono contrassegnate come segue:
+  |------------------+-------------------+-------------------|
+  | 22 13 17 *11*  0 | 3 15  0  2 22     | 14 21 17 24 *4*   |
+  | 8  2 23 *4* 24   | *9* 18 13 17 *5*  | 10 16 15 *9* 19   |
+  | 21 *9* 14 16 *7* | 19  8 *7* 25 23   | 18  8 23 26 20    |
+  | 6 10  3 18 *5*   | 20 *11* 10 24 *4* | 22 *11* 13  6 *5* |
+  | 1 12 20 15 19    | 14 21 16 12  6    | 2  0 12  3 *7*    |
+  |------------------+-------------------+-------------------|
+
+  Dopo l'estrazione dei successivi sei numeri (17, 23, 2, 0, 14 e 21) non ci sono ancora vincitori: 
+  |----------------------+--------------------+-----------------------|
+  | 22 13 *17* *11* *0*  | 3 15 *0* *2* 22    | *14* *21* *17* 24 *4* |
+  | 8 *2* *23* *4* 24    | *9* 18 13 *17* *5* | 10 16 15 *9* 19       |
+  | *21* *9* *14* 16 *7* | 19  8 *7* 25 *23*  | 18  8 *23* 26 20      |
+  | 6 10  3 18 *5*       | 20 *11* 10 24 *4*  | 22 *11* 13  6 *5*     |
+  | 1 12 20 15 19        | *14* *21* 16 12  6 | *2* *0* 12  3 *7*     |
+  |----------------------+--------------------+-----------------------|
+
+
+  Infine viene estratto il numero 24, e la scheda vincente risulta la terza perché ha almeno una riga o una colonna completa di numeri segnati
+  (in questo caso l'intera riga superiore: =14 21 17 24 4=).
+  |----------------------+---------------------+-------------------------|
+  | 22 13 *17* *11* *0*  | 3 15 *0* *2* 22     | *14* *21* *17* *24* *4* |
+  | 8 *2* *23* *4* *24*  | *9* 18 13 *17* *5*  | 10 16 15 *9* 19         |
+  | *21* *9* *14* 16 *7* | 19  8 *7* 25 *23*   | 18  8 *23* 26 20        |
+  | 6 10  3 18 *5*       | 20 *11* 10 *24* *4* | 22 *11* 13  6 *5*       |
+  | 1 12 20 15 19        | *14* *21* 16 12  6  | *2* *0* 12  3 *7*       |
+  |----------------------+---------------------+-------------------------|
+
+  Ora è possibile calcolare il punteggio della scheda vincente.
+  Inizia trovando la somma di tutti i numeri =non marcati=: in questo caso la somma è =188=.
+  Quindi per ottenere il punteggio finale, moltiplica quella somma per il l'ultimo numero chiamato (nell'esempio =24=).
+  Nell'esempio il punteggio del vincitore è =188 * 24 = 4512=.
+
+  Per garantire la vittoria contro il calamaro gigante, scopri quale tavola vincerà per prima.
+  *Quale sarà il tuo punteggio finale se scegli quella tavola?*
+
+* Part 2
+  D'altra parte, forse non è il caso di far arrabiare il calamaro gigante a questa profondità.
+  Decidi allora di adottare un'altra strategia: farlo vincere.
+
+  Non sei sicuro di quante schede potrebbe giocare contemporaneamente un calamaro gigante, quindi piuttosto che perdere tempo a contare i suoi tentacoli,
+  la cosa più sicura da fare è capire quale scheda vincerà per ultima, e scegliere quella.
+  In questo modo, indipendentemente dalle schede che sceglie il calamaro, vincerà di sicuro.
+
+  Nell'esempio di sopra, la seconda scheda è l'ultima a vincere, il che accade quando viene chiamato il =13=.
+  Se dovessi continuare a giocare fino a questo punto, la seconda scheda avrebbe un punteggio finale di =148 * 13 = 1924=.
+
+  Scopri quale tavola vincerà per ultima.
+  *Quale sarebbe il suo punteggio finale?*
