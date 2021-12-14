@@ -50,3 +50,33 @@
 
   Considerando solo le linee orizzontali e verticali:
   *in quanti punti si sovrappongono almeno due linee?*
+
+** Part 2
+   Sfortunatamente, considerare solo le linee orizzontali e verticali non ti dà il quadro completo: è necessario considerare anche le linee diagonali.\\
+
+   A causa dei limiti del sistema di mappatura delle sorgenti idrotermali, le linee nell'elenco saranno sempre e solo =orizzontali=, =verticali= o =diagonali a esattamente 45 gradi=.
+   In altre parole:
+
+   - Una voce come =1,1 -> 3,3= copre i punti =1,1=, =2,2= e =3,3=.
+   - Una voce come =9,7 -> 7,9= copre i punti =9,7=, =8,8= e =7,9=.
+
+   Considerando tutte le linee dell'esempio precedente, ora produrrebbe il seguente diagramma:
+   
+   #+begin_src
+   1.1....11. 
+   .111...2.. 
+   ..2.1.111. 
+   ...1.2.2.. 
+   .112313211 
+   ...1.2.... 
+   ..1...1... 
+   .1.....1.. 
+   1.......1. 
+   222111.... 
+   #+end_src
+
+   Devi ancora determinare il numero di punti in cui almeno due linee si sovrappongono.
+   Nell'esempio precedente, il totale è =12=x punti.
+
+   Considerando tutte le linee:
+   *in quanti punti si sovrappongono almeno due linee?*
