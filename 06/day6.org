@@ -1,0 +1,74 @@
+* Day 6: Lanternfish
+  Il fondale marino sta diventando sempre più ripido.
+  Forse le chiavi della slitta sono state trasportate infondo?\\
+
+  Un enorme e luminoso branco di pesci lanterna nuota nei paraggi.
+  Devono riprodursi rapidamente per raggiungere numeri così elevati: forse si riproducono esponenzialmente?
+  Dovresti modellare il loro tasso di crescita per essere sicuro.\\
+
+  Sebbene tu non sappia nulla di questa specifica specie di pesce lanterna, fai alcune ipotesi.
+  Sicuramente, ogni pesce lanterna crea un nuovo pesce lanterna una volta ogni 7 giorni.\\
+
+  Tuttavia, questo processo non è necessariamente sincronizzato tra ogni pesce lanterna:
+  un pesce lanterna potrebbe avere 2 giorni rimanenti prima di creare un altro pesce lanterna, mentre un altro potrebbe averne 4.
+  Quindi, puoi modellare ogni pesce come un singolo numero che rappresenta il numero di giorni fino a quando creerà un nuovo pesce lanterna.\\
+
+  Inoltre riesci ad osservare che un nuovo pesce lanterna avrebbe sicuramente bisogno di un po' più di tempo prima di essere in grado di riprodursi (deve maturare): due giorni per l'esattezza.\\
+
+  Quindi, supponiamo di avere un pesce lanterna con un timer interno di =3=:
+  - Dopo un giorno, il suo timer interno diventerebbe =2=.
+  - Dopo un altro giorno, il suo timer interno diventa =1=.
+  - Dopo un altro giorno, il suo timer interno diventa =0=.
+  - Dopo un altro giorno, il suo timer interno si ripristina a =6= e crea un nuovo pesce lanterna con un timer interno di =8=.
+  - Dopo un altro giorno, il primo pesce lanterna avrebbe un timer interno di =5= e il secondo pesce lanterna avrebbe un timer interno di =7=.
+
+  Un pesce lanterna che crea un nuovo pesce reimposta il suo timer a =6=, e non a =7= (perché =0= è incluso come valore).
+  Il nuovo pesce lanterna inizia con un timer interno di =8= e non inizia il conto alla rovescia fino al giorno successivo.\\
+  
+  Rendendosi conto di ciò che stai cercando di fare, il sottomarino produce automaticamente un elenco delle età di diverse centinaia di pesci lanterna nelle vicinanze (il tuo input di puzzle).
+  Ad esempio, supponiamo che ti sia stato fornito il seguente elenco:
+
+  |-----------|
+  | 3,4,3,1,2 |
+  |-----------|
+
+  Questo elenco significa che il primo pesce ha un timer interno di =3=, il secondo pesce ha un timer interno di =4= e così via fino al quinto pesce, che ha un timer interno di =2=.
+  La simulazione su questi dati procede nei successivi giorni come segue:
+  
+  #+begin_example
+  Initial state: 3,4,3,1,2
+  After  1 day:  2,3,2,0,1
+  After  2 days: 1,2,1,6,0,8
+  After  3 days: 0,1,0,5,6,7,8
+  After  4 days: 6,0,6,4,5,6,7,8,8
+  After  5 days: 5,6,5,3,4,5,6,7,7,8
+  After  6 days: 4,5,4,2,3,4,5,6,6,7
+  After  7 days: 3,4,3,1,2,3,4,5,5,6
+  After  8 days: 2,3,2,0,1,2,3,4,4,5
+  After  9 days: 1,2,1,6,0,1,2,3,3,4,8
+  After 10 days: 0,1,0,5,6,0,1,2,2,3,7,8
+  After 11 days: 6,0,6,4,5,6,0,1,1,2,6,7,8,8,8
+  After 12 days: 5,6,5,3,4,5,6,0,0,1,5,6,7,7,7,8,8
+  After 13 days: 4,5,4,2,3,4,5,6,6,0,4,5,6,6,6,7,7,8,8
+  After 14 days: 3,4,3,1,2,3,4,5,5,6,3,4,5,5,5,6,6,7,7,8
+  After 15 days: 2,3,2,0,1,2,3,4,4,5,2,3,4,4,4,5,5,6,6,7
+  After 16 days: 1,2,1,6,0,1,2,3,3,4,1,2,3,3,3,4,4,5,5,6,8
+  After 17 days: 0,1,0,5,6,0,1,2,2,3,0,1,2,2,2,3,3,4,4,5,7,8
+  After 18 days: 6,0,6,4,5,6,0,1,1,2,6,0,1,1,1,2,2,3,3,4,6,7,8,8,8,8
+  #+end_example
+  
+  Ogni giorno, uno =0= diventa un =6= e aggiunge un nuovo =8= alla fine dell'elenco, mentre ogni altro numero diminuisce di =1= se era presente all'inizio della giornata.\\
+
+  In questo esempio, dopo =18= giorni, ci sono un totale di =26= pesci.
+  Dopo =80= giorni, ci sarebbe un totale di =5934=.\\
+
+  Trova un modo per simulare il processo di riproduzione dei pesci lanterna.
+  *eQuanti pesci lanterna ci sarebbero dopo 80 giorni?*
+
+* Part 2
+  Supponiamo che il pesce lanterna viva per sempre e abbia cibo e spazio illimitati.
+  Avrebbero preso il controllo dell'intero oceano?\\
+
+  Dopo =256= giorni nell'esempio precedente, ci sarebbe un totale di =26984457539= lanternfish!\\
+
+  *Quanti pesci lanterna ci sarebbero dopo 256 giorni?*
