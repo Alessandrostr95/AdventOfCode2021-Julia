@@ -1,0 +1,74 @@
+* Day 7: The Treachery of Whales
+  Una balena gigante ha deciso che il suo prossimo pasto sarà il tuo sottomarino, ed è molto più veloce di te.
+  Non c'è nessun posto dove scappare!\\
+
+  All'improvviso, uno sciame di granchi (ciascuno nel suo minuscolo sottomarino - altrimenti sarebbe troppo profondo per loro) si avvicina per salvarti!
+  Sembrano prepararsi a fare un buco nel fondo dell'oceano.
+  I sensori indicano un enorme sistema di grotte sotterranee appena oltre il punto in cui stanno mirando!\\
+
+  I sottomarini-granchio devono essere tutti allineati prima che abbiano abbastanza potenza per aprire un buco abbastanza grande da far passare il tuo sottomarino.
+  Tuttavia, non sembra che saranno allineati prima che la balena ti raggiunga!
+  Forse puoi aiutare?\\
+
+  C'è un grosso problema: i sottomarini granchio possono muoversi solo orizzontalmente...\\
+
+  Generi rapidamente un elenco della posizione orizzontale di ciascun granchio (il tuo input di puzzle).
+  I sottomarini-granchio hanno carburante limitato, quindi devi trovare un modo per far combaciare tutte le loro posizioni orizzontali richiedendo loro di spendere il minor carburante possibile.\\
+
+  Ad esempio, considera le seguenti posizioni orizzontali:
+
+  |-----------------------|
+  | 16,1,2,0,4,2,7,1,2,14 |
+  |-----------------------|
+
+  Ciò significa che c'è un granchio con la posizione orizzontale =16=, un granchio con la posizione orizzontale =1=, e così via...
+
+  Ogni spostamento orizzontale di una posizione costa 1 carburante al singolo granchio.
+  Puoi scegliere qualsiasi posizione orizzontale su cui allinearli tutti, ma quella che costa meno carburante nell'esempio è la posizione orizzontale =2=:
+
+  - Passa da 16 a 2: 14 carburante
+  - Passa da 1 a 2: 1 carburante
+  - Passa da 2 a 2: 0 carburante
+  - Passa da 0 a 2: 2 carburante
+  - Passa da 4 a 2: 2 carburante
+  - Passa da 2 a 2: 0 carburante
+  - Passa da 7 a 2: 5 carburante
+  - Passa da 1 a 2: 1 carburante
+  - Passa da 2 a 2: 0 carburante
+  - Passa da 14 a 2: 12 carburante
+
+  Il costo totale di questa soluzione è =37= di carburante.
+  Questo è il risultato più economico possibile: i risultati più costosi includono l'allineamento alla posizione 1 (=41= carburante), alla posizione 3 (=39= carburante) o alla posizione 10 (=71= carburante).\\
+  
+  Determina la posizione orizzontale in cui i granchi possono allinearsi utilizzando il minor carburante possibile.
+  *Qual è il costo minimo in carburante che possono spendere?*
+
+* Part 2
+  I granchi non sembrano essere interessati alla tua soluzione.
+  Forse non capisci l'ingegneria del granchio?\\
+
+  A quanto pare, i motori dei sottomarini-granchio non consumano carburante ad una velocità costante.
+  Invece, ogni spostamento di 1 passo in orizzontale costa 1 unità di carburante in più rispetto all'ultimo:
+  il primo passo costa =1=, il secondo passo =2=, il terzo passo =3=, e così via.\\
+
+  Man mano che ogni granchio si muove, spostarsi ulteriormente diventa sempre più costoso.
+  Questo cambia la migliore posizione orizzontale su cui allinearli tutti.
+  Nell'esempio precedente, il risultato diventa =5=:
+
+  - Passa da 16 a 5: 66 carburante
+  - Passa da 1 a 5: 10 carburante
+  - Passa da 2 a 5: 6 carburante
+  - Passa da 0 a 5: 15 carburante
+  - Passa da 4 a 5: 1 carburante
+  - Passa da 2 a 5: 6 carburante
+  - Passa da 7 a 5: 3 carburante
+  - Passa da 1 a 5: 10 carburante
+  - Passa da 2 a 5: 6 carburante
+  - Passa da 14 a 5: 45 carburante
+
+  Il costo complessivo sarà =168= carburante.
+  Questo è il nuovo risultato più economico possibile.
+  Infatti la vecchia posizione ottimale (=2=) ora costa =206= carburante.\\
+
+  Determina la posizione orizzontale in cui i granchi possono allinearsi utilizzando il minor carburante possibile, in modo che possano crearti una via di fuga!\\
+  *Quanto carburante devono spendere per allinearsi in quella posizione?*
